@@ -19,8 +19,11 @@ const SingleProduct = ({ data }) => {
                     <p>Seller Name : {seller_name}</p>
                  
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        {/* <button className="btn btn-primary">Buy Now</button> */}
+                        <label htmlFor="BookingModal" className="btn btn-primary">Buy Now</label>
                     </div>
+
+                   
                 </div>
             </div>
         </div>
