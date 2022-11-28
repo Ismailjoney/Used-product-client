@@ -39,10 +39,14 @@ const SingUp = () => {
             });
     }
 
-    const saveUser = (name, email, role) => {
-        const user = { name, email, role };
+     const saveUser = (name, email, role) => {
+        const user = { 
+            name,
+            email,
+            role 
+        };
         console.log(user)
-        fetch('http://localhost:5000/userCollection/allBuyer', {
+        fetch('http://localhost:5000/userCollection', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -51,7 +55,8 @@ const SingUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setCreatedUserEmail(email);
+                console.log(data)
+                //setCreatedUserEmail(email);
             })
     }
 

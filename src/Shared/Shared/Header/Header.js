@@ -17,7 +17,11 @@ const Header = () => {
         <li><Link to="/blog">Blog</Link></li>    
          {
             user?.uid ? 
+            <>
+            <li><Link to='/dashboard'>Dashboard</Link></li>
             <li><button onClick={handleLogout}>Sign out</button></li>
+            </>
+        
             :
             <li><Link to="/login">Log In</Link></li> 
          }  

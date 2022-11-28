@@ -24,7 +24,7 @@ const LogIn = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 navigate('/')
                 setLoginUserEmail(data.email);
             })
