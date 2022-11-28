@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthorProvider';
- 
- 
+
+
 
 const SingUp = () => {
 
@@ -12,10 +12,10 @@ const SingUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('')
-    
+
     const navigate = useNavigate();
 
- 
+
 
     const handleSignUp = (data) => {
         setSignUPError('');
@@ -80,6 +80,24 @@ const SingUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </div>
+                    {/* kjk */}
+
+                    <div className="space-y-1 text-sm mb-3 mt-4">
+                        <label htmlFor="password"   >
+                            Select Your option
+                        </label>
+                        <select
+                            {...register("role")}
+                            className="input input-bordered w-full max-w-xs "
+                        >
+                            <option value="seller">seller</option>
+                            <option value="Buyer">Buyer</option>
+                        </select>
+                        {errors.email && <p>{errors.email.message}</p>}
+                    </div>
+
+
+                    {/* kjj */}
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Password</span></label>
                         <input type="password" {...register("password", {
