@@ -29,7 +29,7 @@ const SingUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.role);
                     })
                     .catch(err => console.log(err));
             })
@@ -39,9 +39,10 @@ const SingUp = () => {
             });
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
-        fetch('https://doctors-portal-server-rust.vercel.app/users', {
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
+        console.log(user)
+        fetch('http://localhost:5000/userCollection/allBuyer', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
