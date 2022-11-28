@@ -4,6 +4,8 @@ import CategoriesItemDetails from "../Components/HomeComponents/CategoriesItemDe
 import Main from "../layout/Main";
 import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
+import LogIn from "../Pages/LogRegInfo/LogIn";
+import SingUp from "../Pages/LogRegInfo/SingUp";
  
 
 export const router = createBrowserRouter([
@@ -28,6 +30,14 @@ export const router = createBrowserRouter([
             {
                 path:'/blog',
                 element:<Blog></Blog>
+            },
+            {
+                path:'/login',
+                element: <LogIn></LogIn>
+            },
+            {
+                path:'/signup',
+                element: <SingUp></SingUp>
             }
         ]
     }
