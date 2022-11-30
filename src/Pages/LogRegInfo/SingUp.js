@@ -11,13 +11,14 @@ const SingUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    //const [createdUserEmail, setCreatedUserEmail] = useState('')
 
     const navigate = useNavigate();
 
 
 
     const handleSignUp = (data) => {
+        console.log(data)
         setSignUPError('');
         createUser(data.email, data.password)
             .then(result => {
@@ -43,7 +44,7 @@ const SingUp = () => {
         const user = { 
             name,
             email,
-            role 
+            role: role, 
         };
         console.log(user)
         fetch('http://localhost:5000/userCollection', {

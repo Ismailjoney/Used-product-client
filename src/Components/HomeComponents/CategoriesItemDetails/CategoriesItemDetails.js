@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthorProvider';
+import Loading from '../../../Loading/Loading';
 import SingleProduct from '../SingleProduct/SingleProduct';
 import BookingModal from './BookingModal/BookingModal';
 
 const CategoriesItemDetails = () => {
+    const {loading} = useContext(AuthContext)
     const datas = useLoaderData([])
     const [productBooked, setProductBooked] = useState(null)
+
+    if(loading){
+        <Loading></Loading>
+    }
 
     return (
         <div>
