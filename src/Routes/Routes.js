@@ -26,14 +26,10 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/categories/:id',
-                element: <CategoriesItemDetails></CategoriesItemDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/productCategories/${params.id}`)
+                element: <PrivetRoutes><CategoriesItemDetails></CategoriesItemDetails></PrivetRoutes>,
+                loader: ({params}) => fetch(`https://used-products-server-omega.vercel.app/productCategories/${params.id}`)
             },
-            // {
-            //     path:'/specificDetails',
-            //     element:<Specificcategorie></Specificcategorie>
-            //     // loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
-            // },
+
             {
                 path:'/blog',
                 element:<Blog></Blog>

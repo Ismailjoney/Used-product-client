@@ -12,8 +12,7 @@ const AddYourProduct = () => {
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
     const navigate = useNavigate();
-
-
+    
     const handleAddDoctor = data => {
 
         const image = data.image[0];
@@ -30,19 +29,19 @@ const AddYourProduct = () => {
                 if (imgData.success) {
                     console.log(imgData.data.url);
                     const info = {
-                        img: imgData.data.url,
+                        image: imgData.data.url,
                         details: data.description,
                         original_price: data.original_price,
                         resale_price: data.resale_price,
                         location: data.location,
                         years_of_used: data.years_of_used,
-                        // seller_name: data.seller_name,
-                        // email: data.email,
+                        seller_name: data.seller_name,
                         category_id: data.option
+                         
                     }
                     console.log(info)
 
-                    fetch('http://localhost:5000/productCategories', {
+                    fetch('https://used-products-server-omega.vercel.app/productCategories', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -52,24 +51,18 @@ const AddYourProduct = () => {
                         .then(res => res.json())
                         .then(data => {
                             console.log(data)
-                            //setCreatedUserEmail(email);
+                            toast.success('added successFull')
+                            
                         })
                 }
             })
 
 
-        // console.log(info)
+        
 
 
-    }
-
-    // if(isLoading){
-    //     return  
-    // }
-
-
-
-    return (
+    }  
+      return (
         <div className='w-96 p-7'>
             <h2 className="text-4xl">Add  Your Product</h2>
             <form onSubmit={handleSubmit(handleAddDoctor)}>
@@ -80,9 +73,7 @@ const AddYourProduct = () => {
                     })} className="input  w-full max-w-xs" />
                     {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                 </div>
-                {/* kjhk */}
-
-                <div className="form-control w-full max-w-xs  ">
+                 <div className="form-control w-full max-w-xs  ">
                     <label className="label"> <span className="label-text">Description</span></label>
                     <input type="text" {...register("description", {
                         required: true
@@ -102,13 +93,13 @@ const AddYourProduct = () => {
                     })} className="input input-bordered w-full max-w-xs h-20 p-6" />
 
                 </div>
-                {/* <div className="form-control w-full max-w-xs  ">
+                <div className="form-control w-full max-w-xs  ">
                     <label className="label"> <span className="label-text">Price</span></label>
                     <input type="text" {...register("resale_price", {
                         required: true
                     })} className="input input-bordered w-full max-w-xs" />
 
-                </div> */}
+                </div>
                 <div className="form-control w-full max-w-xs  ">
                     <label className="label"> <span className="label-text">Used</span></label>
                     <input type="text" {...register("years_of_used", {
@@ -116,7 +107,7 @@ const AddYourProduct = () => {
                     })} className="input input-bordered w-full max-w-xs" />
 
                 </div>
-                
+
 
                 {/* hjgjj */}
                 <div className="form-control w-full max-w-xs">
@@ -126,13 +117,13 @@ const AddYourProduct = () => {
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                 </div>
-                <div className="form-control w-full max-w-xs">
+                {/* <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Email</span></label>
                     <input type="email" {...register("email", {
                         required: true
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
-                </div>
+                </div> */}
 
                 <div className="space-y-1 text-sm mb-3 mt-4">
                     <label htmlFor="password"   >

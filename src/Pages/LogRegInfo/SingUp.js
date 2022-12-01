@@ -47,7 +47,7 @@ const SingUp = () => {
             role: role, 
         };
         console.log(user)
-        fetch('http://localhost:5000/userCollection', {
+        fetch('https://used-products-server-omega.vercel.app/userCollection', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -57,18 +57,11 @@ const SingUp = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                //setCreatedUserEmail(email);
+                 
             })
     }
 
-
-
-
-
-
-
-
-    return (
+  return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
                 <h2 className='text-xl text-center'>Sign Up</h2>

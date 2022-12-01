@@ -1,9 +1,11 @@
 import React from 'react';
- 
+import { useNavigate } from 'react-router-dom';
+
 
 const SingleProduct = ({ data, setProductBooked }) => {
 
     const { image, details, location, original_price, resale_price, seller_name, tittle, years_of_used } = data;
+    const navigate = useNavigate('')
     return (
         <div>
             <div className="card card-compact w-100 bg-base-100 shadow-xl">
@@ -25,6 +27,7 @@ const SingleProduct = ({ data, setProductBooked }) => {
                             onClick={() => setProductBooked(data)}
                             htmlFor="BookingModal"
                             className="btn btn-primary">Buy Now</label>
+                        
                     </div>
 
 

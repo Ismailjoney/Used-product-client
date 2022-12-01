@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthorProvider';
 import Loading from '../../../Loading/Loading';
 import SingleProduct from '../SingleProduct/SingleProduct';
@@ -9,6 +9,7 @@ const CategoriesItemDetails = () => {
     const {loading} = useContext(AuthContext)
     const datas = useLoaderData([])
     const [productBooked, setProductBooked] = useState(null)
+    const navigate = useNavigate()
 
     if(loading){
         <Loading></Loading>

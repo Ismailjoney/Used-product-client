@@ -1,18 +1,21 @@
- 
+
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthorProvider';
- 
- 
+
+
 
 const LogIn = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signIn} = useContext(AuthContext);
+    const { user, signIn, providerLogIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider()
 
     const from = location.state?.from?.pathname || '/';
 
@@ -24,7 +27,6 @@ const LogIn = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                // console.log(user);
                 navigate('/')
                 setLoginUserEmail(data.email);
             })
@@ -33,11 +35,18 @@ const LogIn = () => {
                 setLoginError(error.message);
             });
 
+    }
 
-           
-            
-              
-            
+    const googleSingIn = () => {
+        providerLogIn(googleProvider)
+            .then(res => {
+                const user = res.user;
+                navigate('/')
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
 
 
@@ -74,7 +83,7 @@ const LogIn = () => {
                 </form>
                 <p>New to this website <Link className='text-secondary' to="/signup">Create new Account</Link></p>
                 <div className="divider">OR</div>
-                <button   className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={googleSingIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

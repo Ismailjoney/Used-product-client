@@ -7,10 +7,10 @@ const Myorder = () => {
     const {user} = useContext(AuthContext)
     const[order, setOrder] = useState()
 
-    // const url = `http://localhost:5000/booking?email=${user?.email}`;
+    // const url = `https://used-products-server-omega.vercel.app/booking?email=${user?.email}`;
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/booking?email=${user?.email}`)
+        fetch(`https://used-products-server-omega.vercel.app/booking?email=${user?.email}`)
         .then(res => res.json())
         .then(data =>  setOrder(data))
     },[user?.email])
