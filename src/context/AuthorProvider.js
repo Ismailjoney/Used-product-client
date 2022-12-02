@@ -32,7 +32,6 @@ const AuthorProvider = ({children}) => {
     }
 
     const providerLogIn = (provider) => {
-        // return signInWithPopup(auth,provider)
         return signInWithPopup(auth,provider)
     }
 
