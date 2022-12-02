@@ -62,7 +62,7 @@ const BookingModal = ({ productBooked }) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="BookingModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    {/* <h2 className='text-right'>{title}</h2> */}
+                    
                     <br />
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
                         <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
